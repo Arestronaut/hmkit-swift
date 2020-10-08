@@ -148,7 +148,11 @@ public class HMAccessCertificate: Codable {
                 return nil
             }
 
-            bytes = [versionValue] + issuer + providingSerial.bytes + gainingSerial.bytes + gainingPublicKey.bytes + dateBytes
+            bytes = [versionValue]
+            bytes.append(contentsOf: issuer)
+            bytes.append(contentsOf: providingSerial.bytes)
+            bytes.append(contentsOf: gainingSerial.bytes)
+            bytes.append(contentsOf: dateBytes)
         }
 
         // Handle permissions
